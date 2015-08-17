@@ -1,7 +1,6 @@
 FROM vkyii/alpine:supervisor
 
-#RUN apk-install mysql mysql-client
-RUN apk --update add mysql mysql-client && rm -rf /var/cache/apk/*
+RUN apk-install mysql mysql-client
 RUN mysql_install_db --user=mysql -ldata=/var/lib/mysql
 
 WORKDIR /mysql
