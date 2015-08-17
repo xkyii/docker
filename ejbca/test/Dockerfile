@@ -15,4 +15,7 @@ ADD config/ejbca/* $EJBCA_HOME/conf/
 ADD config/supervisor/supervisord.conf /etc/supervisord.conf
 ADD config/mysql/mysql_up.sh /usr/bin/
 ADD config/jboss/module.xml $APPSRV_HOME/modules/com/mysql/main/
+ADD script/build-ejbca.sh /usr/bin/
+
+CMD ["supervisord", "-c", "/etc/supervisord.conf"]
 
