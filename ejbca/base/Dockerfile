@@ -18,6 +18,7 @@ COPY . /build
 
 RUN mkdir -p /opt \
  && apk-install supervisor mysql-client mysql \
+ && mysql_install_db --user=mysql -ldata=/var/lib/mysql \
  && wget http://downloads.sourceforge.net/project/ejbca/ejbca6/ejbca_6_3_1_1/ejbca_ce_6_3_1_1.zip \
  && unzip ejbca_ce_6_3_1_1.zip -q \
  && wget http://archive.apache.org/dist/ant/binaries/apache-ant-$ANT_VER-bin.tar.gz \
@@ -26,5 +27,4 @@ RUN mkdir -p /opt \
  && tar -zxf mysql-connector-java-5.1.36.tar.gz \
  && mv ./mysql-connector-java-5.1.36/mysql-connector-java-5.1.36-bin.jar . \
  && rm -rf mysql-connector-java-5.1.36test
-
 
