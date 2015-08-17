@@ -5,8 +5,7 @@ RUN mysql_install_db --user=mysql -ldata=/var/lib/mysql
 
 WORKDIR /mysql
 
-ADD mysql_up.sh /usr/bin/
-ADD supervisord.conf /etc/supervisord.conf
+COPY . /mysql
 EXPOSE 3306
 
-CMD ["supervisord"]
+CMD ["supervisord", "-c", "/mysql/supervisord.conf"]
