@@ -14,10 +14,10 @@ fi
 mysqld_safe --init-file=$INITFILE
 
 # init ejbca db
-cat > /tmp/ejbca.sql <<EOF
-create database ejbca;
-grant all privileges on ejbca.* to 'ejbca'@'localhost' identified by 'ejbca';
-flush privileges;
-EOF
+# cat > /tmp/ejbca.sql <<EOF
+# create database ejbca;
+# grant all privileges on ejbca.* to 'ejbca'@'localhost' identified by 'ejbca';
+# flush privileges;
+# EOF
 
-mysql -u root -e "/tmp/ejbca.sql"
+# mysql -u root -e "/tmp/ejbca.sql"

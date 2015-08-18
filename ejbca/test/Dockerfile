@@ -8,7 +8,9 @@ FROM vkyii/ejbca:base
 
 MAINTAINER vkyii@foxmail.com
 
-ENV ROOT_PASSWORD docker
+ENV ROOT_PASSWORD=docker \
+	USERNAME=ejbca \
+	PASSWORD=ejbca
 
 RUN mkdir -p $APPSRV_HOME/modules/com/mysql/main/ \
  && mv /build/mysql-connector-java-5.1.36-bin.jar $APPSRV_HOME/modules/com/mysql/main/ \
