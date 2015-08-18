@@ -10,9 +10,10 @@ $APPSRV_HOME/bin/standalone.sh &
 
 #
 # register driver
+# FIX me!
 #
-$APPSRV_HOME/bin/jboss-cli.sh '/subsystem=datasources/jdbc-driver=com.mysql.jdbc.Driver:add(driver-name=com.mysql.jdbc.Driver,driver-class-name=com.mysql.jdbc.Driver,driver-module-name=com.mysql,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc.jdbc2.optional.MysqlXADataSource)'
-$APPSRV_HOME/bin/jboss-cli.sh :reload
+$APPSRV_HOME/bin/jboss-cli.sh -c --command='/subsystem=datasources/jdbc-driver=com.mysql.jdbc.Driver:add(driver-name=com.mysql.jdbc.Driver,driver-class-name=com.mysql.jdbc.Driver,driver-module-name=com.mysql,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc.jdbc2.optional.MysqlXADataSource)'
+$APPSRV_HOME/bin/jboss-cli.sh -c --command=':shutdown(restart=true)'
 
 #
 # Build EJBCA
