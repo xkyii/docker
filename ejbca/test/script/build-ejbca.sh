@@ -10,10 +10,19 @@ $APPSRV_HOME/bin/standalone.sh &
 
 #
 # register driver
-# FIX me!
+# FIX ME!
+# wait for jboss startup end
 #
 $APPSRV_HOME/bin/jboss-cli.sh -c --command='/subsystem=datasources/jdbc-driver=com.mysql.jdbc.Driver:add(driver-name=com.mysql.jdbc.Driver,driver-class-name=com.mysql.jdbc.Driver,driver-module-name=com.mysql,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc.jdbc2.optional.MysqlXADataSource)'
 $APPSRV_HOME/bin/jboss-cli.sh -c --command=':shutdown(restart=true)'
+
+#
+# FIX ME!
+# 这一步要删除 $APPSRV_HOME/standalone/configuration/standalone.xml中与h2数据相关的driver
+# 仅保留上一步mysql的
+# 计划用python读写xml
+#
+
 
 #
 # Build EJBCA
