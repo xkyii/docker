@@ -3,6 +3,9 @@
 INITFILE=/tmp/init.sql
 touch $INITFILE
 
+
+echo "create database ejbca;" >> $INITFILE
+
 if [ -n $ROOT_PASSWORD ]; then
   echo "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$ROOT_PASSWORD'" >> $INITFILE
 fi
