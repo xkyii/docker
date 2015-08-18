@@ -8,6 +8,10 @@ set -x -e
 sed -i 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/' $APPSRV_HOME/standalone/configuration/standalone.xml
 $APPSRV_HOME/bin/standalone.sh &
 
+# register driver
+$APPSRV_HOME/bin/jboss-cli.sh '/subsystem=datasources/jdbc-driver=com.mysql.jdbc.Driver:add(driver-name=com.mysql.jdbc.Driver,driver-class-name=com.mysql.jdbc.Driver,driver-module-name=com.mysql,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc.jdbc2.optional.MysqlXADataSource)'
+$APPSRV_HOME/bin/jboss-cli.sh :reload
+
 #
 # Build EJBCA
 #
