@@ -14,11 +14,9 @@ fi
 
 
 # init ejbca db
-cat > INITFILE <<EOF
-create database ejbca;
-grant all privileges on ejbca.* to 'ejbca'@'localhost' identified by 'ejbca';
-flush privileges;
-EOF
+echo "create database ejbca;" >> $INITFILE
+echo "grant all privileges on ejbca.* to 'ejbca'@'localhost' identified by 'ejbca';" >> $INITFILE
+echo "flush privileges;" >> $INITFILE
 
 mysqld_safe --init-file=$INITFILE
 mysql_secure_installation
