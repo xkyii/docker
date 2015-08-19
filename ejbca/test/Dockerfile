@@ -20,7 +20,7 @@ ADD config/ejbca/* $EJBCA_HOME/conf/
 ADD config/supervisor/supervisord.conf /etc/supervisord.conf
 ADD script/*.sh /usr/bin/
 
-RUN /usr/bin/build-ejbca.sh
+RUN /bin/sh /usr/bin/build-ejbca.sh
 
 #CMD ["supervisord", "-c", "/etc/supervisord.conf"]
 CMD ["/opt/jboss-as-7.1.1.Final/bin/standalone.sh"]
