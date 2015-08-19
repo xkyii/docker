@@ -32,11 +32,17 @@ echo "JBoss is UP!"
 
 #
 # register driver
-# FIX ME!
-# wait for jboss startup end
 #
 $APPSRV_HOME/bin/jboss-cli.sh -c --command='/subsystem=datasources/jdbc-driver=com.mysql.jdbc.Driver:add(driver-name=com.mysql.jdbc.Driver,driver-class-name=com.mysql.jdbc.Driver,driver-module-name=com.mysql,driver-xa-datasource-class-name=com.mysql.jdbc.jdbc.jdbc2.optional.MysqlXADataSource)'
 $APPSRV_HOME/bin/jboss-cli.sh -c --command=':shutdown(restart=true)'
+
+# 等待JBoss启动
+while [[ `netstat -an | grep 8080 | wc -l` == 0 ]];
+do
+        echo "Wating for JBoss start up"
+        sleep 1;
+done
+echo "JBoss is UP!"
 
 #
 # FIX ME!
@@ -65,6 +71,13 @@ $ANT_HOME/bin/ant deploy
 
 # ant install这步需要jboss重启,可以提前做,不要问为什么,手误试出来的 
 $APPSRV_HOME/bin/jboss-cli.sh -c --command=':shutdown(restart=true)'
+# 等待JBoss启动
+while [[ `netstat -an | grep 8080 | wc -l` == 0 ]];
+do
+        echo "Wating for JBoss start up"
+        sleep 1;
+done
+echo "JBoss is UP!"
 $ANT_HOME/bin/ant install
 
 # 处理一个错误
