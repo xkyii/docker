@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
 set -x -e
 
 #
 # Start Mysql
 #
-/usr/bin/mysql_up.sh &
+/bin/sh /usr/bin/mysql_up.sh &
 
 # 等待Mysql启动
 while [[ `netstat -an | grep 3306 | wc -l` == 0 ]];

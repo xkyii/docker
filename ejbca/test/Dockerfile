@@ -22,5 +22,5 @@ ADD config/supervisor/supervisord.conf /etc/supervisord.conf
 ADD script/*.sh /usr/bin/
 
 #CMD ["supervisord", "-c", "/etc/supervisord.conf"]
-CMD ["/bin/build-ejbca.sh"]
+CMD ["/usr/bin/build-ejbca.sh"]
 
