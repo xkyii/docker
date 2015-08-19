@@ -3,14 +3,11 @@
 set -x -e
 
 #
-# Start JBoss
+# Start Mysql
 #
-sed -i 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/' $APPSRV_HOME/standalone/configuration/standalone.xml
-$APPSRV_HOME/bin/standalone.sh &
+/usr/bin/mysql_up.sh &
 
-#
 # 等待Mysql启动
-#
 while [[ `netstat -an | grep 3306 | wc -l` == 0 ]];
 do
         echo "Wating for Mysql start up"
@@ -19,8 +16,12 @@ done
 echo "Mysql is UP!"
 
 #
-# 等待JBoss启动
+# Start JBoss
 #
+sed -i 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/' $APPSRV_HOME/standalone/configuration/standalone.xml
+$APPSRV_HOME/bin/standalone.sh &
+
+# 等待JBoss启动
 while [[ `netstat -an | grep 8080 | wc -l` == 0 ]];
 do
         echo "Wating for JBoss start up"
