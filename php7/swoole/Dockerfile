@@ -8,7 +8,7 @@ ENV SWOOLE_VERSION swoole-1.7.19-rc1
 WORKDIR /build
 
 RUN curl -SL https://github.com/swoole/swoole-src/archive/$SWOOLE_VERSION.tar.gz -o swoole.tar.gz \
- && mkdir -p swoole
+ && mkdir -p swoole \
  && tar -zxf swoole.tar.gz -C swoole --strip-components=1 \
  && cd swoole \
  && phpize \
