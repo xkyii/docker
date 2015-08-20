@@ -1,4 +1,4 @@
-FROM vkyii/java:openjdk7
+FROM vkyii/openjdk7
 
 MAINTAINER vkyii@foxmail.com
 
