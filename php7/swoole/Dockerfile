@@ -1,4 +1,4 @@
-FROM php:7
+FROM vkyii/php:7
 
 MAINTAINER vkyii@foxmail.com
 
@@ -14,5 +14,7 @@ RUN curl -SL https://github.com/swoole/swoole-src/archive/$SWOOLE_VERSION.tar.gz
  && phpize \
  && ./configure \
  && make \
- && make install
+ && make install \
+ && echo "extension=swoole.so" > $PHP_INI_DIR/php.ini
+
 
