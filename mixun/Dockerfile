@@ -15,13 +15,12 @@ WORKDIR /build
 # Copy over private key, and set permissions
 ADD id_rsa /root/.ssh/id_rsa
 
-RUN apk-install --virtual build-deps git openssh build-base \
- && mkdir -p /root/.ssh \
- && touch /root/.ssh/known_hosts \
- && ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts \
+RUN apk-install --virtual build-deps git build-base \
+ #	compile opensslib
  && git clone git@bitbucket.org:vkyii/opensslib.git \
  && cd opensslib/build/proj.linux/SJK0817400RE/libSJK0817400RE \
  && make CONFIG=Debug \
  && cp Debug/libSJK0817400RE.so /usr/lib64/openssl/engines/ \
+ #	clear
  && apk del build-deps \
  && rm -rf /build
