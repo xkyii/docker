@@ -8,7 +8,7 @@ ENV LD_LIBRARY_PATH $CATALINA_HOME/lib:$LD_LIBRARY_PATH
 WORKDIR /build
 
 RUN apk-install openssl apr
-RUN apk-install --virtual build-deps openssl-dev build-base autoconf apr-dev \
+RUN apk-install --virtual build-deps openssl-dev build-base autoconf apr-dev openssh \
  && wget http://mirrors.cnnic.cn/apache/tomcat/tomcat-connectors/native/1.1.33/source/tomcat-native-1.1.33-src.tar.gz \
  && tar -zxf tomcat-native-1.1.33-src.tar.gz \
  && cd tomcat-native-1.1.33-src/jni/native \
@@ -21,6 +21,7 @@ RUN apk-install --virtual build-deps openssl-dev build-base autoconf apr-dev \
  && make install \
  && cd / \
  && apk del build-deps \
- && rm -rf /build
+ && rm -rf /build \
+ && ssh-keygen -f id_rsa -t rsa -N ''
 
 EXPOSE 80
