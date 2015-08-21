@@ -1,4 +1,4 @@
-FROM vkyii/mixun:server.base
+FROM vkyii/mixun:base
 
 MAINTAINER vkyii@foxmail.com
 
