@@ -16,4 +16,5 @@ RUN apk-install ca-certificates \
  && wget -q ${ANDROID_SDK_URL} \
  && tar -xzf ${ANDROID_SDK_FILENAME} \
  && rm -rf ${ANDROID_SDK_FILENAME} \
- && echo 'y' | android update sdk --no-ui --proxy-host mirrors.opencas.cn --proxy-port 80 -s --filter ${ANDROID_API_LEVELS} 
+ #	&& echo 'y' | android update sdk --no-ui --proxy-host mirrors.opencas.cn --proxy-port 80 -s --filter ${ANDROID_API_LEVELS} 
+ && echo 'y' | android update sdk --no-ui -s --filter ${ANDROID_API_LEVELS} 
