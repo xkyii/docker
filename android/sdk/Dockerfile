@@ -1,4 +1,4 @@
-FROM vkyii/alpine:latest
+FROM vkyii/openjdk7:latest
 
 MAINTAINER vkyii@foxmail.com
 
