@@ -14,6 +14,7 @@ RUN apk-install --virtual build-deps openssl-dev build-base autoconf apr-dev ope
  && tar -zxf tomcat-native-1.1.33-src.tar.gz \
  && cd tomcat-native-1.1.33-src/jni/native \
  && ./configure \
+ 		CFLAGS="-DHAVE_ENGINE_LOAD_BUILTIN_ENGINES $CFLAGS" \
 		--with-apr=/usr/bin/apr-1-config \
 		--with-java-home=$JAVA_HOME \
 		--with-ssl=yes \
