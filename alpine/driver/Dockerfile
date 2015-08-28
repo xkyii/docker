@@ -2,4 +2,4 @@ FROM vkyii/alpine:latest
 
 MAINTAINER vkyii@foxmail.com
 
-apk-install build-base
+RUN apk-install build-base
