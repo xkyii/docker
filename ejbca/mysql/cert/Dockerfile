@@ -15,8 +15,6 @@ RUN apk-install --virtual build-deps openssl  \
  	-srcstorepass serverpwd -deststorepass serverpwd -destkeypass serverpwd \
  #	export truststore
  && keytool -exportcert -rfc -keystore truststore.jks  -storepass changeit -storetype JKS -alias managementca -file ca.crt \
- #	change cert & key format
- && openssl pkcs12 -in ca.p12 -nokeys -out ca.crt \
  && openssl pkcs12 -in superadmin.p12 -nokeys -out superadmin.crt \
  && openssl pkcs12 -in superadmin.p12 -nocerts -out superadmin.key \
  && openssl pkcs12 -in tomcat.p12 -nocerts -out tomcat.key \
