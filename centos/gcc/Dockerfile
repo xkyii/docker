@@ -25,4 +25,8 @@ RUN yum -y install gcc gcc-c++ wget tar zlib-devel bzip2 \
 && make install \
 && mv /usr/bin/gcc /usr/bin/gcc4 \
 && ln -s /usr/local/bin/gcc /usr/bin/gcc
+&& mv /usr/bin/g++ /usr/bin/g++4 \
+&& ln -s /usr/local/bin/++ /usr/bin/++
+&& mv /usr/bin/c++ /usr/bin/c++4 \
+&& ln -s /usr/local/bin/++ /usr/bin/++
  #	clear
