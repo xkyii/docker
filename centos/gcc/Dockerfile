@@ -5,7 +5,7 @@ MAINTAINER vkyii@foxmail.com
 
 WORKDIR /build
 
-RUN yum -y install gcc gcc-c++ tar wget bzip2 zlib-devel kernel kernel-devel perl
+RUN yum -y install gcc gcc-c++ tar zlib-devel \
  #	upgrade gcc/g++
 && curl -O http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-5.2.0/gcc-5.2.0.tar.gz \
 && tar -zxf gcc-5.2.0.tar.gz \
