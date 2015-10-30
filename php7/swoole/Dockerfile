@@ -17,5 +17,9 @@ RUN curl -SL https://github.com/swoole/swoole-src/archive/$SWOOLE_VERSION.tar.gz
  && make install \
  && echo "extension=swoole.so" > $PHP_INI_DIR/php.ini \
  && echo "\$* ; mkfifo pipe && cat pipe" > /bin/deamon.sh \
+ # composer
+ && curl -sS https://getcomposer.org/installer | php \
+ && mv composer.phar /usr/local/bin/composer \
+ # clear
  && rm -rf /build
 
