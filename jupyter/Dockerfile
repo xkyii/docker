@@ -2,10 +2,9 @@ FROM gliderlabs/alpine:latest
 
 MAINTAINER vkyii@foxmail.com
 
-RUN apk-install bash
+RUN apk-install bash bzip2
 
-RUN wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86.sh -O build.sh
-# RUN wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh -O build.sh
+RUN wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh -O build.sh
 RUN bash build.sh -b -p /opt/anaconda
 RUN rm build.sh
 
