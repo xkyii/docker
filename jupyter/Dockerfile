@@ -9,11 +9,9 @@ ENV ANACONDA_SH=Anaconda3-4.0.0-Linux-x86_64.sh \
 RUN yum -y install wget bzip2 \
  && wget http://repo.continuum.io/archive/$ANACONDA_SH \
  && bash $ANACONDA_SH -b -p $ANACONDA_PATH \
- && rm $ANACONDA_SH \
- && conda install jupyter
+ && rm $ANACONDA_SH
  
 # config
-RUN mkdir -p -m 700 /root/.jupyter/
 ADD .jupyter/jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
 VOLUME /notebooks
