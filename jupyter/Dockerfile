@@ -2,8 +2,6 @@ FROM centos:latest
 
 MAINTAINER twist@vkyii.com
 
-USER root
-
 ENV ANACONDA_SH=Anaconda3-4.0.0-Linux-x86_64.sh \
     ANACONDA_PATH=/opt/anaconda \
     PATH=$ANACONDA_PATH/bin:$PATH
