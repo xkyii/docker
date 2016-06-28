@@ -1,13 +1,16 @@
 FROM centos:latest
 
-MAINTAINER vkyii@foxmail.com
+MAINTAINER twist@vkyii.com
 
-RUN yum -y install wget bzip2
-RUN wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh -O build.sh
-RUN bash build.sh -b -p /opt/anaconda
-RUN rm build.sh
+ENV ANACONDA_SH=Anaconda3-4.0.0-Linux-x86_64.sh \
+    ANACONDA_PATH=/opt/anaconda
 
-ENV PATH /opt/anaconda/bin:$PATH
+RUN yum -y install wget bzip2 \
+ && wget http://repo.continuum.io/archive/$ANACONDA_SH \
+ && bash $ANACONDA_SH -b -p $ANACONDA_PATH \
+ && rm $ANACONDA_SH
+
+ENV PATH $ANACONDA_PATH/bin:$PATH
 
 # volumn set
 WORKDIR /data
