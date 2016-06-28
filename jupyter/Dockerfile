@@ -2,7 +2,7 @@ FROM centos:latest
 
 MAINTAINER vkyii@foxmail.com
 
-RUN yum -y install wget
+RUN yum -y install wget bzip2
 RUN wget http://repo.continuum.io/archive/Anaconda3-4.0.0-Linux-x86_64.sh -O build.sh
 RUN bash build.sh -b -p /opt/anaconda
 RUN rm build.sh
