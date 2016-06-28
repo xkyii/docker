@@ -12,8 +12,11 @@ RUN yum -y install wget bzip2 \
 
 ENV PATH $ANACONDA_PATH/bin:$PATH
 
-# volumn set
-WORKDIR /data
+# config
+ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
+
+VOLUME /notebooks
+WORKDIR /notebooks
 
 EXPOSE 8888
 
