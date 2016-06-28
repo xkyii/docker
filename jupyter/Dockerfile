@@ -3,15 +3,15 @@ FROM centos:latest
 MAINTAINER twist@vkyii.com
 
 ENV ANACONDA_SH=Anaconda3-4.0.0-Linux-x86_64.sh \
-    ANACONDA_PATH=/opt/anaconda
+    ANACONDA_PATH=/opt/anaconda \
+    PATH=$ANACONDA_PATH/bin:$PATH
 
 RUN yum -y install wget bzip2 \
  && wget http://repo.continuum.io/archive/$ANACONDA_SH \
  && bash $ANACONDA_SH -b -p $ANACONDA_PATH \
- && rm $ANACONDA_SH
-
-ENV PATH $ANACONDA_PATH/bin:$PATH
-
+ && rm $ANACONDA_SH \
+ && conda install jupyter
+ 
 # config
 RUN mkdir -p -m 700 /root/.jupyter/
 ADD .jupyter/jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
@@ -21,5 +21,4 @@ WORKDIR /notebooks
 
 EXPOSE 8888
 
-CMD ["/bin/sh", "-c","jupyter notebook"]
-# CMD ["jupyter", "notebook"]
+CMD ["jupyter", "notebook"]
