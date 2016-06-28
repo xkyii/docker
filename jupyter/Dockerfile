@@ -10,6 +10,9 @@ RUN yum -y install wget bzip2 \
  && bash $ANACONDA_SH -b -p $ANACONDA_PATH \
  && rm $ANACONDA_SH
 
+RUN pip install --upgrade pip \
+ && pip install tushare
+
 # config
 ADD .jupyter/jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 ADD ./jupyter.sh /usr/local/bin/jupyter.sh
