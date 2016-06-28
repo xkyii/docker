@@ -3,8 +3,7 @@ FROM centos:latest
 MAINTAINER twist@vkyii.com
 
 ENV ANACONDA_SH=Anaconda3-4.0.0-Linux-x86_64.sh \
-    ANACONDA_PATH=/opt/anaconda \
-    PATH=$ANACONDA_PATH/bin:$PATH
+    ANACONDA_PATH=/opt/anaconda
 
 RUN yum -y install wget bzip2 \
  && wget http://repo.continuum.io/archive/$ANACONDA_SH \
@@ -19,5 +18,7 @@ VOLUME /notebooks
 WORKDIR /notebooks
 
 EXPOSE 8888
+
+ENV PATH $ANACONDA_PATH/bin:$PATH
 
 CMD ["bash", "/usr/local/bin/jupyter.sh"]
