@@ -13,7 +13,7 @@ RUN yum -y install wget bzip2 \
 ENV PATH $ANACONDA_PATH/bin:$PATH
 
 # config
-ADD jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
+ADD .jupyter/jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
 VOLUME /notebooks
 WORKDIR /notebooks
