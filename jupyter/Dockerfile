@@ -20,4 +20,4 @@ WORKDIR /notebooks
 
 EXPOSE 8888
 
-CMD jupyter notebook
+CMD ["jupyter", "notebook"]
