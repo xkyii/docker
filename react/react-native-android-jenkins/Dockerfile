@@ -5,6 +5,8 @@ MAINTAINER twist@vkyii.com
 ENV ANDROID_HOME=/usr/local/android-sdk-linux \
 	ANDROID_SDK_FILE=android-sdk_r24.4.1-linux.tgz
 
+ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+
 RUN cd ~ && yum update -y \
  && yum install -y wget
  # [java]
@@ -13,7 +15,6 @@ RUN cd ~ && yum update -y \
  && cd /usr/local \
  && wget https://dl.google.com/android/$ANDROID_SDK_FILE \
  && tar -xzf $ANDROID_SDK_FILE \
- && export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools \
  && rm $ANDROID_SDK_FILE && cd ~ \
  # [android tool and system images]
  && echo "y" | android update sdk --no-ui --force --all \
