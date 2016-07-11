@@ -8,7 +8,7 @@ ENV ANDROID_HOME=/usr/local/android-sdk-linux \
 ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 RUN cd ~ && yum update -y \
- && yum install -y wget
+ && yum install -y wget \
  # [java]
  && yum install -y java-1.8.0-openjdk \
  # [android sdk]
