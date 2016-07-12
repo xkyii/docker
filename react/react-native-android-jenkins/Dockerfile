@@ -29,7 +29,7 @@ RUN cd ~ && yum update -y \
 
 RUN wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat-stable/jenkins.repo \
  && rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io.key \
- && yum install jenkins
+ && yum install -y jenkins
 
 
 # Ref:
