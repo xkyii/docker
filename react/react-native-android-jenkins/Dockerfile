@@ -8,7 +8,7 @@ ENV ANDROID_HOME=/usr/local/android-sdk-linux \
 ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 RUN cd ~ && yum update -y \
- && yum install -y wget \
+ && yum install -y wget git unzip which\
  # [java]
  && yum install -y java-1.8.0-openjdk \
  # [android sdk]
@@ -37,10 +37,13 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
+# Env
+ENV JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+ENV PATH $JAVA_HOME/bin:$PATH
+
 # Start
 EXPOSE 8080
 CMD ["java", "-jar", "/usr/lib/jenkins/jenkins.war"]
-
 
 
 # Ref:
