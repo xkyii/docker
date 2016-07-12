@@ -31,6 +31,12 @@ RUN cd ~ && yum update -y \
  # [clean]
  && yum clean all
 
+# Add Tini
+ENV TINI_VERSION v0.9.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+ENTRYPOINT ["/tini", "--"]
+
 
 # Ref:
 # [docker+centos7+java](https://github.com/nimmis/docker-java-centos)
