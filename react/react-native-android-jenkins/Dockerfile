@@ -24,12 +24,12 @@ RUN cd ~ && yum update -y \
  && yum install -y nodejs \
  # [react-native]
  && npm install -g react-native-cli \
+ # [jenkins]
+ && wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat-stable/jenkins.repo \
+ && rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io.key \
+ && yum install -y jenkins \
  # [clean]
  && yum clean all
-
-RUN wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat-stable/jenkins.repo \
- && rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io.key \
- && yum install -y jenkins
 
 
 # Ref:
