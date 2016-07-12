@@ -42,3 +42,4 @@ ENTRYPOINT ["/tini", "--"]
 # [docker+centos7+java](https://github.com/nimmis/docker-java-centos)
 # [node](https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
 # [android-sdk](https://developer.android.com/studio/index.html#downloads)
+# [tini](https://github.com/krallin/tini)
