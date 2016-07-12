@@ -3,7 +3,7 @@ FROM centos:latest
 MAINTAINER twist@vkyii.com
 
 ENV ANDROID_HOME=/usr/local/android-sdk-linux \
-	ANDROID_SDK_FILE=android-sdk_r24.4.1-linux.tgz
+    ANDROID_SDK_FILE=android-sdk_r24.4.1-linux.tgz
 
 ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
@@ -18,7 +18,7 @@ RUN cd ~ && yum update -y \
  && rm $ANDROID_SDK_FILE && cd ~ \
  # [android tool and system images]
  && echo "y" | android update sdk --no-ui --force --all \
- 	--filter platform-tools,android-23,build-tools-23.0.1,extra-android-support,extra-android-m2repository,sys-img-x86_64-android-23,extra-google-m2repository \
+    --filter platform-tools,android-23,build-tools-23.0.1,extra-android-support,extra-android-m2repository,sys-img-x86_64-android-23,extra-google-m2repository \
  # [node]
  && curl --silent --location https://rpm.nodesource.com/setup_6.x | bash - \
  && yum install -y nodejs \
@@ -36,6 +36,11 @@ ENV TINI_VERSION v0.9.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
+
+# Start
+EXPOSE 8080
+CMD ["java", "-jar", "/usr/lib/jenkins/jenkins.war"]
+
 
 
 # Ref:
