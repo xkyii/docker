@@ -38,7 +38,7 @@ RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
 # Env
-ENV JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+ENV JAVA_HOME $(readlink -f /usr/bin/java | sed "s:bin/java::")
 ENV PATH $JAVA_HOME/bin:$PATH
 
 # Start
