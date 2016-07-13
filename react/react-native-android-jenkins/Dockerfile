@@ -3,7 +3,8 @@ FROM centos:latest
 MAINTAINER twist@vkyii.com
 
 ENV ANDROID_HOME=/usr/local/android-sdk-linux \
-    ANDROID_SDK_FILE=android-sdk_r24.4.1-linux.tgz
+    ANDROID_SDK_FILE=android-sdk_r24.4.1-linux.tgz \
+    TERM=xterm
 
 ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
