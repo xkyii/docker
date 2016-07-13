@@ -11,6 +11,7 @@ RUN cd ~ && yum update -y \
  && yum install -y wget git unzip which\
  # [java]
  && yum install -y java-1.8.0-openjdk \
+ && echo JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::") >> /etc/environment
  # [android sdk]
  && cd /usr/local \
  && wget https://dl.google.com/android/$ANDROID_SDK_FILE \
@@ -38,7 +39,6 @@ RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
 # Env
-ENV JAVA_HOME $(readlink -f /usr/bin/java | sed "s:bin/java::")
 ENV PATH $JAVA_HOME/bin:$PATH
 
 # Start
