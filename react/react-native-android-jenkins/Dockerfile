@@ -33,10 +33,10 @@ RUN yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 nc
 
 # [gradle]
 RUN cd /opt \
- && wget -N https://services.gradle.org/distributions/gradle-${gradle_version}-all.zip \
- && unzip -foq gradle-${gradle_version}-all.zip \
- && ln -sf gradle-${gradle_version} gradle \
- && rm gradle-${gradle_version}-all.zip \
+ && wget -N https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
+ && unzip -foq gradle-$GRADLE_VERSION-all.zip \
+ && ln -sf gradle-$GRADLE_VERSION gradle \
+ && rm gradle-$GRADLE_VERSION-all.zip \
  && cd ~
 
 # [node & react-native]
