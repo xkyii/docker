@@ -12,8 +12,9 @@ RUN cd ~ && yum update -y \
  && yum install -y wget git unzip which\
  # [java]
  && yum install -y java-1.8.0-openjdk \
- && echo JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::") >> /etc/environment
+ && echo JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::") >> /etc/environment \
  # [android sdk]
+ && yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686 \
  && cd /usr/local \
  && wget https://dl.google.com/android/$ANDROID_SDK_FILE \
  && tar -xzf $ANDROID_SDK_FILE \
