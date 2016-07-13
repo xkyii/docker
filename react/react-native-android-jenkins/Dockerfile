@@ -5,11 +5,9 @@ MAINTAINER twist@vkyii.com
 ENV ANDROID_HOME=/usr/local/android-sdk-linux \
     ANDROID_SDK_FILE=android-sdk_r24.4.1-linux.tgz \
     JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
-    GRADLE_VERSION=2.4 \
-    GRADLE_HOME=/opt/gradle \
     TERM=xterm
 
-ENV PATH $JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$GRADLE_HOME/bin:$PATH
+ENV PATH $JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 # [base]
 RUN yum update -y \
@@ -30,14 +28,6 @@ RUN yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 nc
  && echo "y" | android update sdk --no-ui --force --all \
     --filter platform-tools,android-23,build-tools-23.0.1,extra-android-support,extra-android-m2repository,sys-img-x86_64-android-23,extra-google-m2repository \
  && yum clean all
-
-# [gradle]
-RUN cd /opt \
- && wget -N https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
- && unzip gradle-$GRADLE_VERSION-all.zip \
- && ln -sf gradle-$GRADLE_VERSION gradle \
- && rm gradle-$GRADLE_VERSION-all.zip \
- && cd ~
 
 # [node & react-native]
 RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash - \
