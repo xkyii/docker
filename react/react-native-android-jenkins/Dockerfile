@@ -5,7 +5,7 @@ MAINTAINER twist@vkyii.com
 ENV ANDROID_HOME=/usr/local/android-sdk-linux \
     ANDROID_SDK_FILE=android-sdk_r24.4.1-linux.tgz \
     JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
-    GRADLE_VERSION=2.14
+    GRADLE_VERSION=2.14 \
     GRADLE_HOME=/opt/gradle \
     TERM=xterm
 
