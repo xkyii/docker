@@ -4,15 +4,15 @@ MAINTAINER twist@vkyii.com
 
 ENV ANDROID_HOME=/usr/local/android-sdk-linux \
     ANDROID_SDK_FILE=android-sdk_r24.4.1-linux.tgz \
+    JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
     TERM=xterm
 
-ENV PATH $ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
+ENV PATH $JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
 
 RUN cd ~ && yum update -y \
  && yum install -y wget git unzip which\
  # [java]
- && yum install -y java-1.8.0-openjdk \
- && echo JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::") >> /etc/environment \
+ && yum install -y java-1.8.0-openjdk-devel \
  # [android sdk]
  && yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686 \
  && cd /usr/local \
@@ -40,16 +40,15 @@ ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
-# Env
-ENV PATH $JAVA_HOME/bin:$PATH
-
 # Start
 EXPOSE 8080
 CMD ["java", "-jar", "/usr/lib/jenkins/jenkins.war"]
 
 
 # Ref:
-# [docker+centos7+java](https://github.com/nimmis/docker-java-centos)
 # [node](https://nodejs.org/en/download/package-manager/#enterprise-linux-and-fedora)
 # [android-sdk](https://developer.android.com/studio/index.html#downloads)
-# [tini](https://github.com/krallin/tini)
+# [nimmis/docker-java-centos](https://github.com/nimmis/docker-java-centos)
+# [krallin/tini](https://github.com/krallin/tini)
+# [nekocode/docker-android](https://github.com/nekocode/docker-android)
+# [emmby/docker-android](https://github.com/emmby/docker-android)
