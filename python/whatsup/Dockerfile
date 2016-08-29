@@ -7,7 +7,7 @@ RUN pip install --upgrade pip \
  && pip install pymysql \
  && pip install apscheduler
 
-
+EXPOSE 5000
 ENTRYPOINT ["/tini", "--"]
 
 CMD [ "/bin/bash" ]
