@@ -13,7 +13,8 @@ RUN yum -y install wget bzip2 \
  && rm $ANACONDA_SH
 
 RUN pip install --upgrade pip \
- && pip install tushare
+ && pip install tushare \
+ && pip install TA-Lib
 
 # config
 ADD .jupyter/jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
