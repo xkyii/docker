@@ -9,6 +9,9 @@ RUN yum -y install gcc make \
  && ./configure --prefix=/usr \
  && make \
  && make install \
+ && cd .. \
+ && rm -rf ta-lib \
+ && rm -f ta-lib-0.4.0-src.tar.gz \
  && yum clean all
 
 RUN pip install --upgrade pip \
