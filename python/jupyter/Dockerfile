@@ -25,6 +25,7 @@ ADD ./jupyter.sh /usr/local/bin/jupyter.sh
 VOLUME /notebooks
 WORKDIR /notebooks
 
+ENV LD_LIBRARY_PATH /usr/local/lib:$LD_LIBRARY_PATH
 ENTRYPOINT ["/tini", "--"]
 EXPOSE 8888
 
