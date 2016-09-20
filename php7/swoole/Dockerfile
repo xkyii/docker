@@ -45,7 +45,7 @@ RUN pecl install swoole
 RUN docker-php-ext-enable swoole
 
 # install msgpack
-RUN pecl install msgpack
+RUN pecl install channel://pecl.php.net/msgpack-2.0.1
 
 #install redis
 ENV PHPREDIS_VERSION php7
